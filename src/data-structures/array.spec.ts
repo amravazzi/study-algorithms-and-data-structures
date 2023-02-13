@@ -4,12 +4,41 @@ describe("array", () => {
   it("should initialize and empty array", () => {
     const arr = new MyArray();
 
-    expect(arr.lenght).toBe(0);
-    expect(arr.data).toBe({});
+    expect(arr.length).toBe(0);
+    expect(arr.data).toEqual({});
   });
-  it.todo("should get the data in array position");
-  it.todo(
-    "should push data in the array's last postion and return array lenght"
-  );
-  it.todo("should remove the last item of the array");
+  it("should push data in the array's last postion and return the array new lenght", () => {
+    const arr = new MyArray();
+    const len1 = arr.push("hello");
+    const len2 = arr.push("world");
+    const arr_len = arr.length;
+
+    expect(len1).toBe(1);
+    expect(len2).toBe(2);
+    expect(arr_len).toBe(2);
+  });
+
+  it("should get the data in array position", () => {
+    const arr = new MyArray();
+    arr.push("hello");
+    arr.push("world");
+
+    const item = arr.get(1);
+
+    expect(item).toBe("world");
+  });
+
+  it("should remove the last item of the array", () => {
+    const arr = new MyArray();
+    arr.push("hello");
+    arr.push("world");
+    arr.push("!");
+
+    const popped_item = arr.pop();
+
+    const item = arr.get(arr.length - 1);
+
+    expect(popped_item).toBe("!");
+    expect(item).toBe("world");
+  });
 });
