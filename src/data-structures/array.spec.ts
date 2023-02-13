@@ -41,4 +41,19 @@ describe("array", () => {
     expect(popped_item).toBe("!");
     expect(item).toBe("world");
   });
+
+  it("should remove the item of the array of the given index", () => {
+    const index = 1;
+    const arr = new MyArray();
+    arr.push("hello");
+    arr.push("world");
+    arr.push("!");
+
+    const deleted_item = arr.delete(index);
+
+    const item = arr.get(index);
+
+    expect(deleted_item).toBe("world");
+    expect(item).toBe("!");
+  });
 });

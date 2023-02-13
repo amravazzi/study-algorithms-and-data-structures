@@ -23,6 +23,21 @@ class MyArray {
     this.length--;
     return last;
   }
+
+  delete(index: number) {
+    const item = this.data[index];
+    this.shiftItemsFrom(index);
+    return item;
+  }
+
+  private shiftItemsFrom(index: number): void {
+    const lastItem = this.length - 1;
+    for (let i = index; i < lastItem; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[lastItem];
+    this.length--;
+  }
 }
 
 export default MyArray;
