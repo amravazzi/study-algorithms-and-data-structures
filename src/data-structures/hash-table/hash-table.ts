@@ -1,8 +1,13 @@
 type hash = number;
 type tuple<T> = [key: string, value: T];
 type bucket<T> = tuple<T>[];
+interface HashTableI {
+  get(key: string): number | undefined;
+  set(key: string, value: any): void;
+  keys(): tuple<any>[0][];
+}
 
-class HashTable {
+class HashTable implements HashTableI {
   private data: bucket<any>[] = [];
 
   constructor(size: number) {
@@ -17,7 +22,7 @@ class HashTable {
     return hash;
   }
 
-  get(key: string) {
+  get(key: string): number | undefined {
     const address = this.hash(key);
     const bucket = this.data[address];
 
