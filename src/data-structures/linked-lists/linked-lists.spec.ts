@@ -94,6 +94,26 @@ describe("linked lists", () => {
 
     expect(node.value).toBe(value3);
   });
+
+  it("should remove a given node in a given index", () => {
+    const value1 = 5;
+    const value2 = 16;
+    const value3 = 1;
+    const value4 = 13;
+
+    const index = 2;
+
+    const ll = new LinkedList<number>(value1);
+    ll.append(value2);
+    ll.append(value3);
+    ll.append(value4);
+    ll.remove(index);
+    const printed_ll = ll.print();
+
+    expect(ll.length).toBe(3);
+    expect(printed_ll[index]).toBe(value4);
+    expect(printed_ll).toEqual([value1, value2, value4]);
+  });
 });
 
 describe("linked lists' node", () => {

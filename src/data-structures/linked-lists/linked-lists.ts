@@ -15,6 +15,7 @@ interface ILinkedList<V> {
   prepend(value: V): LinkedList<V>;
   insert(index: number, value: V): NodeValue<V>[];
   lookup(index: number): INode<V>;
+  remove(index: number): NodeValue<V>[];
 }
 
 class LinkedList<V> implements ILinkedList<V> {
@@ -83,12 +84,22 @@ class LinkedList<V> implements ILinkedList<V> {
 
   lookup(index: number): INode<V> {
     let currNode: NodeNext<V> = this.head;
+    if (index <= 0) return currNode;
+
     let counter = 0;
     while (counter !== index && currNode.next) {
       currNode = currNode.next;
       counter++;
     }
     return currNode;
+  }
+
+  remove(index: number): NodeValue<V>[] {
+    let leaderNode = this.lookup(index - 1);
+    let removingNode = leaderNode.next!;
+    leaderNode.next = removingNode.next;
+    this.length--;
+    return this.print();
   }
 }
 
