@@ -62,7 +62,6 @@ class DoublyLinkedList<V> implements ILinkedList<V> {
     return arr;
   }
 
-  //
   insert(index: number, value: V): NodeValue<V>[] {
     if (index === 0) {
       this.prepend(value);
